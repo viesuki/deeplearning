@@ -6,7 +6,7 @@ enableToc: True
 # Basics of DL
 
 
-| [[Math for DL]]    | [[DL Pipeline]]     | [[Training Tips]] |
+| [[Math for DL]]    | [[basics/DL Pipeline]]     | [[Training Tips]] |
 | :----------------- | :------------------ | :---------------- |
 | [[Linear Algebra]] | [[Data Processing]] | [[Local Minima]]  |
 | [[Calculus]]       | [[Model Choosing]]  | [[Learing Rate]]  |

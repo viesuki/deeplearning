@@ -2,7 +2,21 @@
 title: ML/DL Intro
 ---
 
-# Notion
+
+# History
+
+```mermaid
+timeline
+    title Machine Learning Timeline
+    1950s–60s : Early Days; Self-learning checkers; Perceptron (1957)
+    1970s–80s : Challenge Advance; Decision trees; RL basics; Rediscovery of NNs
+    1990s     : Rise of Statistical ML <br> Probabilistic models <br> Statistical learning; Math foundations
+    2000s     : Big Data Era; Datasets grew & compute cheaper; Rise of Data Mining & Data Science
+    2010s     : Deep Learning Revolution; Deep learning (2012)
+    Present   : Generative models; Large Language Model; Large Vision Models
+```
+
+# Idea
 ```mermaid
 flowchart LR
     subgraph Train[Training]
@@ -79,3 +93,7 @@ flowchart TB
     class L,P blue;
     class M,O gold;
 ```
+
+
+# References
+[1]: [UCB CS189 Lecture 1](https://eecs189.org/fa25)
