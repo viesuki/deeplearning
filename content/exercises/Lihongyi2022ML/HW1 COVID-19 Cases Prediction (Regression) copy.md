@@ -6,7 +6,7 @@ tags: regression
 # Grading
 
 > [!info] 
-> 1. [[#Simple]]: 2.284
+> 1. Simple: 2.284
 > 2. [[#Medium]]: 1.494
 > 3. [[#strong]]: 1.057
 > 4. [[#Boss]]: 0.862
