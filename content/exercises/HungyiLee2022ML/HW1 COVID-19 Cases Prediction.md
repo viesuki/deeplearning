@@ -1,6 +1,6 @@
 ---
 title: HW1 COVID-19 Cases Prediction
-tags: regression
+tags: [regression, Hung-yi Lee]
 ---
 
 # Grading
