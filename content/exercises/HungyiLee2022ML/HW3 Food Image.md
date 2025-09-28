@@ -15,12 +15,39 @@ tags: [classification, Hung-yi Lee]
 # Solution
 > Because of the time costed by each run, from this homework, I'll just try to make the best modelling method to get best score. And also for bossline, I won't pursue too much.
 
+
+## results figure
+
+***Myresidual***
+
+```mermaid
+---
+config:
+  xyChart:
+    width: 900
+    height: 500
+  themeVariables:
+    xyChart:
+      plotColorPalette: "#1f77b4, #ff7f0e, #2ca02c, #d62728"
+      lineStyle: [--, -..-, dashed, dashed]
+---
+xychart-beta
+    title "Training vs Validation (Accuracy and Loss) - Every 10 Epochs"
+    x-axis [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300]
+    y-axis "Metric Value" 0.0 --> 2.2
+    line "Valid Accuracy" [0.40356, 0.50657, 0.55155, 0.52571, 0.60404, 0.69081, 0.69585, 0.65146, 0.69395, 0.73466, 0.73698, 0.72239, 0.71644, 0.7433, 0.78088, 0.75409, 0.74384, 0.76889, 0.78232, 0.77154, 0.80985, 0.79902, 0.81523, 0.81068, 0.82341, 0.77459, 0.82928, 0.83069, 0.80795, 0.73719]
+    line "Train Accuracy" [0.32474, 0.38535, 0.41011, 0.44381, 0.51864, 0.53633, 0.55751, 0.53539, 0.56909, 0.60665, 0.59846, 0.59413, 0.62349, 0.6474, 0.66594, 0.64505, 0.66434, 0.68223, 0.67329, 0.6907, 0.73023, 0.69832, 0.7068, 0.71423, 0.71141, 0.7019, 0.73579, 0.72355, 0.73108, 0.72054]
+    line "Train Loss" [2.11755, 2.01527, 1.98523, 1.92966, 1.81105, 1.78517, 1.77071, 1.80347, 1.74524, 1.67482, 1.71542, 1.72434, 1.65232, 1.60176, 1.57361, 1.62127, 1.58737, 1.54538, 1.59514, 1.50659, 1.46838, 1.52084, 1.50659, 1.49332, 1.49994, 1.53604, 1.46056, 1.47251, 1.48783, 1.49318]
+    line "Valid Loss" [1.89759, 1.65902, 1.56778, 1.58515, 1.47601, 1.29302, 1.25631, 1.35764, 1.27959, 1.17059, 1.16464, 1.21692, 1.22858, 1.15887, 1.08443, 1.13566, 1.18744, 1.09074, 1.07234, 1.07411, 1.0133, 1.094, 1.07411, 1.00726, 1.01011, 1.10858, 0.98673, 0.98373, 1.01133, 1.17527]
+```
+
+
 ## model results
 epoch = 300
 | Model  | HyperParameters <br> | Train <br> acc | Valid <br> acc | Public <br> Score | Private <br> Score |
 | ---   | ---  | --- | --- | --- | --- |
 | Sample code [^3]| ...| ... |... | 0.55278 | 0.57063 |
-| MyResidual | derived from sample code <br> cnn_layer7 & 3 fc_layers <br> fc_dropout=0.5  |...|... | ... | ... |
+| MyResidual | derived from sample code <br> cnn_layer7 & 3 fc_layers <br> fc_dropout=0.5  | 0.72374 | 0.83288 | 0.85059 | 0.85872 |
 | ResNet34 | 3 fc_layers, fc_dropout=0.5 |...| ... | 0.86553 | 0.85360 |
 |    ↓     | ↓ Test Time Augmentation(TTM) <br> Average [5,1,1,1,1,1] |...|... | 0.87250 | 0.86641 |
 | ↓ | ↓ Voting [2,1,1,1,1,1] | ... | ... | **0.87649** | **0.86641** | 
@@ -134,6 +161,9 @@ epoch = 300
    # 2. set optimizer & scheduler CosineAnnealing
    optimizer = torch.optim.RAdam(model.parameters(), lr=5e-4, weight_decay=1e-5)
    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=n_epochs, eta_min=1e-6)
+
+   # 3. label smoothing
+   criterion = nn.CrossEntropyLoss(label_smoothing=0.1)
    ```
 
 # Reflection

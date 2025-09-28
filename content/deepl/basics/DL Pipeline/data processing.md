@@ -1,5 +1,5 @@
 ---
-title: 1.Data Processing
+title: Data Processing
 ---
 
 # Pandas

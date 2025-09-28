@@ -6,7 +6,7 @@ enableToc: True
 # Basics of DL
 
 
-| [[Math for DL]]    | [[basics/DL Pipeline]]     | [[Training Tips]] |
+| [[Math for DL]]    | [[deepl/basics/DL Pipeline]]     | [[Training Tips]] |
 | :----------------- | :------------------ | :---------------- |
 | [[Linear Algebra]] | [[Data Processing]] | [[Local Minima]]  |
 | [[Calculus]]       | [[Model Choosing]]  | [[Learing Rate]]  |
@@ -38,7 +38,7 @@ enableToc: True
 ## Computer Vision
 
 
-## Natural Language Processing
+## [[deepl/NLP | Natural Language Processing]]
 
 
 
