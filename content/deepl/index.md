@@ -6,12 +6,12 @@ enableToc: True
 # Basics of DL
 
 
-| [[Math for DL]]    | [[deepl/basics/DL Pipeline]]     | [[Training Tips]] |
+| [[deepl/basics/Math for DL]]    | [[deepl/basics/DL Pipeline]]     | [[Training Tips]] |
 | :----------------- | :------------------ | :---------------- |
-| [[Linear Algebra]] | [[Data Processing]] | [[Local Minima]]  |
+| [[Linear Algebra]] | [[deepl/basics/DL Pipeline/Data Processing]] | [[Local Minima]]  |
 | [[Calculus]]       | [[Model Choosing]]  | [[Learing Rate]]  |
 | [[Probability]]    | [[Loss Defining]]   |                   |
-|                    | [[Opotimizing]]     |                   |
+| [[deepl/basics/Math for DL/Model Complexity]]     | [[Opotimizing]]     |                   |
 |                    | [[Evaluating]]      |                   |
 
 

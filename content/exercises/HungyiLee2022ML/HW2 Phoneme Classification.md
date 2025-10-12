@@ -1,6 +1,6 @@
 ---
 title: HW2 Phoneme Classification
-tags: [classification, Hung-yi Lee]
+tags: [classification, RNN, Hung-yi Lee]
 ---
 
 # Grading

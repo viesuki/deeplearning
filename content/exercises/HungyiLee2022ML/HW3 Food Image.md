@@ -1,6 +1,6 @@
 ---
 title: HW3 Food Image
-tags: [classification, Hung-yi Lee]
+tags: [classification, CNN, Hung-yi Lee]
 ---
 
 # Grading
