@@ -1,6 +1,8 @@
 ---
 title: HW3 Food Image
 tags: [classification, CNN, Hung-yi Lee]
+created: 2024-9-25
+modified: 2024-9-27
 ---
 
 # Grading

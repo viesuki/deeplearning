@@ -1,13 +1,39 @@
 ---
 title: Model Complexity
 tags: [complexity]
+created: 2024-10-11
+modified: 2024-10-12
 ---
 
 > [!tip]
 > When reading papers, it's very common to come across the computational complexity and the total parameters of a model. So I want to figure it out how to compute these two and how some packeges compute them. Let's dive in.
+> Packges: [torchinfo](https://github.com/TylerYep/torchinfo); [ptflops](https://github.com/sovrasov/flops-counter.pytorch); [thop](https://github.com/Lyken17/pytorch-OpCounter);
 
 
 # Computational Complexity
+
+* **Terminology:**
+- *MACs* = multiply-accumulate ops;
+- *FLOPs* = floating point operations;
+Many sources treat **1 MAC ≈ 2 FLOPs** (one mul + one add). Accounting conventions differ—state your convention when comparing.
+
+> [!info] In most cases of modern packges, MACs is more often used.
+
+* **Output size for 2D conv:**
+  `H_out = floor((H + 2p - k_h)/s) + 1`, `W_out = floor((W + 2p - k_w)/s) + 1`.
+
+* **Typical forward-pass MACs (inference):**
+
+  * Linear: `MACs ≈ d_in * d_out`
+  * Conv2d: `MACs ≈ H_out * W_out * C_out * (k_h * k_w * C_in)`
+  * Grouped conv: divide by `groups`
+  * Depthwise separable:
+    `MACs_depthwise ≈ H_out*W_out*(k_h*k_w*C_in)`
+    `MACs_pointwise ≈ H_out*W_out*(C_in*C_out)`
+  * Self-Attention (seq n, dim d, heads h):
+    `≈ 4*n*d^2 (projections) + 2*n^2*d (attn scores & apply V)`
+  * Transformer FFN (d→4d→d): `≈ 8*n*d^2`
+  * **Training** usually costs ≈ 2–3× the **forward** MACs.
 
 
 
@@ -135,7 +161,7 @@ summary(model, input_size=(32, 10, 128))
 
 ## Multi-Head Self-Attention (params only; not counting MLP)
 
-**Heuristic:** Most params live in Q/K/V and output projections → ~ `4 * d^2` (ignoring tiny biases).
+**Heuristic:** $params = 4 * d^2 + 4*d$.
 
 **Quick check (summary):**
 
@@ -150,68 +176,21 @@ class MHAWrap(nn.Module):
 
 model = MHAWrap()
 summary(model, input_size=(32, 16, 512))  # (batch, seq, d)
+# 4 * 512 * 512 + 4 * 512 = 1050624
 ```
 
----
 
-## Transformer Feed-Forward (d → 4d → d; e.g., 512 → 2048 → 512)
-
-**Formula:** `params = d*4d + 4d*d + biases ≈ 8*d^2 (+ small biases)`
-
-**Quick check (summary):**
+## Transformer Full encoder layer:
 
 ```python
-
-
-ffn = nn.Sequential(
-    nn.Linear(512, 2048),
-    nn.GELU(),
-    nn.Linear(2048, 512)
-)
-summary(ffn, input_size=(32, 16, 512))  # (batch, seq, d)
-```
-
-> (Optional) Full encoder layer:
-
-```python
-
-
 enc = nn.TransformerEncoderLayer(d_model=512, nhead=8, dim_feedforward=2048, batch_first=True)
 summary(enc, input_size=(32, 16, 512))
+# 3,152,384
 ```
 
----
 
-# 2) How to estimate compute (MACs / FLOPs)
-
-* **Terminology:**
-  *MACs* = multiply-accumulate ops; many sources treat **1 MAC ≈ 2 FLOPs** (one mul + one add).
-  Accounting conventions differ—state your convention when comparing.
-
-* **Output size for 2D conv:**
-  `H_out = floor((H + 2p - k_h)/s) + 1`, `W_out = floor((W + 2p - k_w)/s) + 1`.
-
-* **Typical forward-pass MACs (inference):**
-
-  * Linear: `MACs ≈ d_in * d_out`
-  * Conv2d: `MACs ≈ H_out * W_out * C_out * (k_h * k_w * C_in)`
-  * Grouped conv: divide by `groups`
-  * Depthwise separable:
-    `MACs_depthwise ≈ H_out*W_out*(k_h*k_w*C_in)`
-    `MACs_pointwise ≈ H_out*W_out*(C_in*C_out)`
-  * Self-Attention (seq n, dim d, heads h):
-    `≈ 4*n*d^2 (projections) + 2*n^2*d (attn scores & apply V)`
-  * Transformer FFN (d→4d→d): `≈ 8*n*d^2`
-  * **Training** usually costs ≈ 2–3× the **forward** MACs.
-
-> If you later want a quick FLOPs script, use `ptflops` or `fvcore`. But for your request here we’ve kept it to `summary()`.
 
 ---
 
-# 3) Big-O (algorithmic) complexity (bonus)
+# 3) Big-O (algorithmic) complexity
 
-When you need asymptotics in terms of input size `n` (not raw MAC counts), use standard Big-O/Ω/Θ definitions. E.g., vanilla self-attention is **O(n²d)** due to the `QKᵀ` and `softmax(QKᵀ)V` steps.
-
----
-
-If you send me **your concrete model + input size**, I can drop in the exact `summary()` outputs and (optionally) a FLOPs/MACs estimate table.

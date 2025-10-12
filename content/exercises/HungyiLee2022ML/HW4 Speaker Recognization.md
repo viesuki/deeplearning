@@ -1,6 +1,8 @@
 ---
 title: HW4 Speaker Recognization
 tags: [classification, transformer, Hung-yi Lee]
+created: 2024-10-10
+modified: 2024-10-12
 ---
 
 # Grading

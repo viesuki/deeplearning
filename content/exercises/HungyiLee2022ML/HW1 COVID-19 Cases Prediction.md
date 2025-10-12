@@ -1,6 +1,8 @@
 ---
 title: HW1 COVID-19 Cases Prediction
 tags: [regression, MLP, Hung-yi Lee]
+created: 2024-9-23
+modified: 2024-9-24
 ---
 
 # Grading

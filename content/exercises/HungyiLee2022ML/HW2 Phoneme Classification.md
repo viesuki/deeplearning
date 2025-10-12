@@ -1,6 +1,8 @@
 ---
 title: HW2 Phoneme Classification
 tags: [classification, RNN, Hung-yi Lee]
+created: 2024-9-24
+modified: 2024-9-26
 ---
 
 # Grading
