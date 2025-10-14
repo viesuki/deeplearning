@@ -24,18 +24,8 @@ Languge is a wonderful invention by human. And around the world, only human can 
 Let's dive into NLP! 😁
 
 
-# Language Model History
-
-| Year | Author | Contribution | Description | Tags |
-| --- | --- | --- | --- | --- |
-| 2003 | Yoshua Bengio | Neural Network Language Model (NNLM)[^NNLM] | a feedforward neural network with a linear projection layer and a non-linear hidden layer was used to learn jointly the word vector representation and a statistical language model. | Model |
-| 2013 | **Tomas Mikolov** | Word2Vec[^Word2Vec] | a neural network model for learning word embeddings, Skip-gram & CBOW (Continuous Bag-of-Words) | Model |
-
-
-
 
 
 [^1]: [CS224N | This NLP parts are almost summarized from the course](https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1246/)
 [^NNLM]: [Neural Network Language Model](https://dl.acm.org/doi/pdf/10.5555/944919.944966)
-[^Word2Vec]: [Word2Vec](https://arxiv.org/pdf/1301.3781.pdf)
 
