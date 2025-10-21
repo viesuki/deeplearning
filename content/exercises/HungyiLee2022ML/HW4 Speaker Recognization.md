@@ -29,21 +29,6 @@ modified: 2024-10-12
 
 
 
-# Reflection
-> [!note] 
-> 1. As presented in the intro part of this homework by AT, I just adopted the idea of using **conformer**, **self attention pooling** and **ASMsoftmax** to solve the problem. Surprisingly, the result is very good. Then I tried to use more layers, more heads and other teches, but the result is not ideal, even worse.
-> 2. Then I thought maybe because self attention pooling dropped too much information, so I decided to calculate the self attention pooling and max pooling after conformer layers, and concatenate them together and feed into the ASMsoftmax. Finally I got 0.86 which is so close to boss line.
-> 3. When I increased the batch size from 32 to 128, the test accuracy increased, but the score decreased with much more time of training.
-> 4. Finally, I just realized that why I combined max pooling and self attention pooling together. So I deleted the max pooling and got the score 0.87 over boss line. Then I tried to plus one more conformer layer and got the score 0.88!!!
-> - I think the model is kind of good already if just using <span style="color: red">strategy 1 to 5, and only plus batch norm layer after the self attention pooling</span>, **we will get over the boss line easily within 35 mins**. And with one more conformer layer, we can get 0.88.
-> - __Next time: focus on boss line strategy; use one more change one time; then record.__
-
-> [!warning] Not Help
-> 1. batch size 
-> 2. train steps
-> 3. more complexity (as 4 conformer layers will get around 0.865)
-
-
 
 # Techniques
 
@@ -113,6 +98,24 @@ modified: 2024-10-12
          out = self.classier(out)
    ```
 8. batchnorm(out) only
+
+
+
+# Reflection
+> [!note] 
+> 1. As presented in the intro part of this homework by AT, I just adopted the idea of using **conformer**, **self attention pooling** and **ASMsoftmax** to solve the problem. Surprisingly, the result is very good. Then I tried to use more layers, more heads and other teches, but the result is not ideal, even worse.
+> 2. Then I thought maybe because self attention pooling dropped too much information, so I decided to calculate the self attention pooling and max pooling after conformer layers, and concatenate them together and feed into the ASMsoftmax. Finally I got 0.86 which is so close to boss line.
+> 3. When I increased the batch size from 32 to 128, the test accuracy increased, but the score decreased with much more time of training.
+> 4. Finally, I just realized that why I combined max pooling and self attention pooling together. So I deleted the max pooling and got the score 0.87 over boss line. Then I tried to plus one more conformer layer and got the score 0.88!!!
+> - I think the model is kind of good already if just using <span style="color: red">strategy 1 to 5, and only plus batch norm layer after the self attention pooling</span>, **we will get over the boss line easily within 35 mins**. And with one more conformer layer, we can get 0.88.
+> - __Next time: focus on boss line strategy; use one more change one time; then record.__
+
+> [!warning] Not Help
+> 1. batch size 
+> 2. train steps
+> 3. more complexity (as 4 conformer layers will get around 0.865)
+
+
 
 # Code
 [HW4 boss](https://github.com/viesuki/ML22-Lihongyi/blob/main/HW4_Speaker/)
