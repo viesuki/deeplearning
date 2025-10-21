@@ -1,6 +1,6 @@
 ---
 title: Model Complexity
-tags: [complexity]
+tags: [math]
 created: 2024-10-11
 modified: 2024-10-12
 ---

@@ -9,7 +9,7 @@ enableToc: True
 | [[deepl/basics/Math for DL]]    | [[deepl/basics/DL Pipeline]]     | [[Training Tips]] |
 | :----------------- | :------------------ | :---------------- |
 | [[Linear Algebra]] | [[deepl/basics/DL Pipeline/Data Processing]] | [[Local Minima]]  |
-| [[Calculus]]       | [[Model Choosing]]  | [[Learing Rate]]  |
+| [[deepl/basics/Math for DL/Calculus]]       | [[Model Choosing]]  | [[Learing Rate]]  |
 | [[Probability]]    | [[Loss Defining]]   |                   |
 | [[deepl/basics/Math for DL/Model Complexity]]     | [[Opotimizing]]     |                   |
 |                    | [[Evaluating]]      |                   |
