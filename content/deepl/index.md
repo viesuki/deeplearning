@@ -6,15 +6,6 @@ enableToc: True
 # Basics of DL
 
 
-| [[deepl/basics/Math for DL]]    | [[deepl/basics/DL Pipeline]]     | [[Training Tips]] |
-| :----------------- | :------------------ | :---------------- |
-| [[Linear Algebra]] | [[deepl/basics/DL Pipeline/Data Processing]] | [[Local Minima]]  |
-| [[deepl/basics/Math for DL/Calculus]]       | [[Model Choosing]]  | [[Learing Rate]]  |
-| [[Probability]]    | [[Loss Defining]]   |                   |
-| [[deepl/basics/Math for DL/Model Complexity]]     | [[Opotimizing]]     |                   |
-|                    | [[Evaluating]]      |                   |
-
-
 ---
 # Artificial Neural Networks
 
@@ -24,7 +15,7 @@ enableToc: True
 
 
 
-## Recurrent Neural Networks
+## [[deepl/neural network/RNN | Recurrent Neural Networks]]
 
 
 
